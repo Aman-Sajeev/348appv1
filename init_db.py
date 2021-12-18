@@ -17,6 +17,8 @@ cur.execute("INSERT INTO posts (TITLE,genre,actor) \
       VALUES ('Breaking Bad','Drama', 'Brian Cranston' )");
 cur.execute("INSERT INTO posts (TITLE,genre,actor) \
       VALUES ('Criminal Minds','Drama', 'Crazy guy' )");
+cur.execute("INSERT INTO posts (TITLE,genre,actor) \
+      VALUES ('Jurrassic Park','Ficton', 'T-Rex' )");
 
 # cur.execute("INSERT INTO posts (title)",
 
