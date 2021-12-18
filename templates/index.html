@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>{% block title %} Welcome to Reqflix {% endblock %}</h1>
+<h1 style="font-size:90px;" align="center">{% block title %} Welcome to Reqflix {% endblock %}</h1>
 {% for post in posts %}
 <a href="{{ url_for('post', post_id=post['id']) }}">
-    <h2>{{ post['title'] }}</h2>
+    <h2>{{ post['title'] }}
+    </h2>
 </a>
 <span class="badge badge-primary">{{ post['created'] }}</span>
 <hr>
