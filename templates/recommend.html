@@ -6,10 +6,13 @@
 
 {% block content %}
   <form method="post">
-    <label for="title">Show Title</label>
-    <input name="title" id="title" required>
-    <label for="content">Show Genre</label>
+    <br><br>
+    <label for="content">What Genre would you like: </label>
     <input type="text" name="content" id="content" required>
-    <input type="submit" value="Recommend Shows">
+    <br><br>
+    <label for="minutes">Desired Runtime (minutes): </label>
+    <input name="minutes" id="minutes" required>
+    <br><br><br><br><br>
+    <input type="submit" value="Recommend Show">
   </form>
 {% endblock %}
