@@ -10,7 +10,13 @@ cur = connection.cursor()
 cur.execute("INSERT INTO posts (TITLE,genre) \
       VALUES ('You', 'drama' )");
 cur.execute("INSERT INTO posts (TITLE,genre,actor) \
-      VALUES ('Avenegers','Action', 'Robert Downey Jr' )");
+      VALUES ('Avengers','Action', 'Robert Downey Jr' )");
+cur.execute("INSERT INTO posts (TITLE,genre,actor) \
+      VALUES ('How I Met Your Mother','Comedy', 'Neil Patrick Harris' )");
+cur.execute("INSERT INTO posts (TITLE,genre,actor) \
+      VALUES ('Breaking Bad','Drama', 'Brian Cranston' )");
+cur.execute("INSERT INTO posts (TITLE,genre,actor) \
+      VALUES ('Criminal Minds','Drama', 'Crazy guy' )");
 
 # cur.execute("INSERT INTO posts (title)",
 
