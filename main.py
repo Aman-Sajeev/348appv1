@@ -91,6 +91,14 @@ def remove():
             conn.execute(
                 "DELETE FROM posts WHERE title = '" + title + "'"
             )
+
+            # id = conn.execute(
+            #     "SELECT id FROM TITLE WHERE title = '" + title + "'"
+            # ).fetchone()
+            # for i in ["TITLE",'MINUTES','CREW',"RATING"]:
+            #     conn.execute(
+            #         "DELETE * FROM " + i + " WHERE id = " + id
+            #     )
             posts = conn.execute('SELECT * FROM posts ORDER BY TITLE').fetchall()
             conn.commit()
             conn.close()
@@ -116,6 +124,16 @@ def update():
                 "UPDATE posts SET genre = '" + content + "', " + "actor = '" + actor + "', "
                 + "minutes = '" + minutes + "' WHERE title = '" + title + "'"
             )
+            # conn.execute(
+            #     "UPDATE  TITLE SET title =  '" + str(title) + "'"
+            # )
+            # conn.execute(
+            #     "UPDATE  RUNTIME SET minutes =  " + str(minutes)
+            # )
+            # conn.execute(
+            #     "UPDATE CREW SET Actor '" + str(actor) + "'"
+            # )
+
             posts = conn.execute('SELECT * FROM posts ORDER BY TITLE').fetchall()
             conn.commit()
             conn.close()
