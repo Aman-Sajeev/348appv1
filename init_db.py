@@ -7,10 +7,10 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO posts (TITLE) \
-      VALUES ('You' )");
-cur.execute("INSERT INTO posts (TITLE) \
-      VALUES ('Avenegers' )");
+cur.execute("INSERT INTO posts (TITLE,genre) \
+      VALUES ('You', 'drama' )");
+cur.execute("INSERT INTO posts (TITLE,genre,actor) \
+      VALUES ('Avenegers','Action', 'Robert Downey Jr' )");
 
 # cur.execute("INSERT INTO posts (title)",
 
