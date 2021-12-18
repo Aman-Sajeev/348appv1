@@ -55,25 +55,22 @@ def create():
                 "INSERT INTO posts (title, genre,actor,minutes) VALUES (?, ?, ?, ?) ",
                 (title, content,actor,minutes),
             )
-            # conn.execute(
-            #     "INSERT INTO TITLE (title) VALUES (?) ",
-            #     (title),
-            # )
-            # conn.execute(
-            #     "INSERT INTO RUNTIME (minutes) VALUES (?) ",
-            #     (minutes),
-            # )
-            #
-            # conn.execute(
-            #     "INSERT INTO CREW (actor) VALUES (?) ",
-            #     actor,
-            # )
+            conn.execute(
+                "INSERT INTO TITLE (title) VALUES ( '" + str(title) + "')"
+            )
+            conn.execute(
+                "INSERT INTO RUNTIME (minutes) VALUES ( '" + str(minutes) + "')"
+            )
+            conn.execute(
+                "INSERT INTO CREW (Actor) VALUES ( '" + str(actor) + "')"
+            )
+
             print('this is from title')
             print(conn.execute('SELECT * FROM TITLE'))
             print('this is from RUNTIME')
             print(conn.execute('SELECT * FROM RUNTIME'))
             print('this is from the actors one')
-            print(conn.execute('SELECT * FROM CREW'))
+            print(str(conn.execute('SELECT * FROM CREW')))
             posts = conn.execute('SELECT * FROM posts ORDER BY TITLE').fetchall()
             conn.commit()
             conn.close()
