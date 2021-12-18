@@ -81,10 +81,9 @@ def create():
 
 @app.route('/remove', methods=('GET', 'POST'))
 def remove():
-    print("here")
+    print("REMOVING")
     if request.method == 'POST':
         title = request.form['title']
-        content = request.form['content']
         if not title:
             flash('Title is required!')
         else:
@@ -106,16 +105,16 @@ def update():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
+        actor = request.form['actor']
+        minutes = request.form['minutes']
         if not title:
             flash('Title is required!')
         else:
             conn = get_db_connection()
+            # updates the posts data with the new info
             conn.execute(
-                "DELETE FROM posts WHERE title = '" + title + "'"
-            )
-            conn.execute(
-                "INSERT INTO posts (TITLE, genre) VALUES (?, ?)",
-                (title, content),
+                "UPDATE posts SET genre = '" + content + "', " + "actor = '" + actor + "', "
+                + "minutes = '" + minutes + "' WHERE title = '" + title + "'"
             )
             posts = conn.execute('SELECT * FROM posts ORDER BY TITLE').fetchall()
             conn.commit()
@@ -128,22 +127,18 @@ def update():
 def recommend():
     print("recommending")
     if request.method == 'POST':
-        title = request.form['title']
         content = request.form['content']
-        if not title:
-            flash('Title is required!')
-        else:
-            conn = get_db_connection()
-            conn.execute(
-                "DELETE FROM posts WHERE title = '" + title + "'"
-            )
-            conn.execute(
-                "INSERT INTO posts (TITLE, genre) VALUES (?, ?)",
-                (title, content),
-            )
-            conn.commit()
-            conn.close()
-            return redirect(url_for('index'))
+        minutes = request.form['minutes']
+        low = int(minutes) - 10
+        high = int(minutes) + 10
+        conn = get_db_connection()
+        posts = conn.execute("SELECT * FROM posts WHERE genre = '" + content
+                           + "' OR minutes BETWEEN " + str(low) + " AND " + str(high) + " ORDER BY TITLE").fetchall()
+
+        conn.commit()
+        conn.close()
+        return render_template('index.html', posts=posts)
+
     return render_template('recommend.html')
 
 
