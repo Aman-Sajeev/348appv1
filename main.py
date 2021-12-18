@@ -91,13 +91,18 @@ def remove():
             conn.execute(
                 "DELETE FROM posts WHERE title = '" + title + "'"
             )
-
             # id = conn.execute(
             #     "SELECT id FROM TITLE WHERE title = '" + title + "'"
             # ).fetchone()
+
+            # conn.execute(
+            #     "CREATE PROCEDURE Remover @tb nvarchar(30) AS DELETE * FROM  WHERE id =  " + id
+            #     "GO; "
+            # )
+
             # for i in ["TITLE",'MINUTES','CREW',"RATING"]:
             #     conn.execute(
-            #         "DELETE * FROM " + i + " WHERE id = " + id
+            #         "EXEC Remover @tb = '" + i + "'"
             #     )
             posts = conn.execute('SELECT * FROM posts ORDER BY TITLE').fetchall()
             conn.commit()
